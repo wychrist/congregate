@@ -7,10 +7,12 @@ $content = [
     'subtitle' => 'Australia Day Awards',
     'intro' => 'intro string',
     'content' => 'content for body of page',
-    'image' => '/assets/paper_theme_v2/img/aus_day_presentation.jpg',
+    'image' => '/assets/paper_theme_v2/img/garden_2024_1_lg.webp',
     'images' => [
-        'first' => '',
-        'second' => ''
+        'first' => '/assets/paper_theme_v2/img/garden_2024_1.webp',
+        'second' => '/assets/paper_theme_v2/img/garden_2024_2.webp',
+        'third' => '/assets/paper_theme_v2/img/garden_2024_3.webp',
+        'forth' => '/assets/paper_theme_v2/img/garden_2024_4.webp'
     ],
 ];
 
@@ -52,6 +54,23 @@ $why->children = [
     new Page($whyPage2Content),
 ];
 
+$tcf2024 = new Page(['title' => '2024 Toowoomba Carnival of Flowers']);
+$tcf2024Page1Content = ['title' => '1st Prize 2024', 'content' => 'The Chronicle Garden Competition Not For Profit Category Winners for 2024 with the Alice in Wounderland theme.', 'image' => '/assets/paper_theme_v2/img/Trophy_2024.webp'];
+//$tcf2024Page2Content = ['title' => '2024 Theme', 'content' => '', 'image' => '/assets/paper_theme_v2/img/Trophy Board.webp'];
+$tcf2024Page3Content = ['title' => 'The Mad Hatter\'s Tea Party', 'content' => '', 'image' => '/assets/paper_theme_v2/img/garden_2024_1.webp'];
+$tcf2024Page4Content = ['title' => 'The Queen of Heart', 'content' => '', 'image' => '/assets/paper_theme_v2/img/garden_2024_2.webp'];
+$tcf2024Page5Content = ['title' => 'The Cheshire Cat', 'content' => '', 'image' => '/assets/paper_theme_v2/img/garden_2024_3.webp'];
+$tcf2024Page6Content = ['title' => 'The High Heel Birds', 'content' => '', 'image' => '/assets/paper_theme_v2/img/garden_2024_4.webp'];
+
+
+$tcf2024->children = [
+    new Page($tcf2024Page1Content),
+    //    new Page($tcf2024Page2Content),
+    new Page($tcf2024Page3Content),
+    new Page($tcf2024Page4Content),
+    new Page($tcf2024Page5Content),
+    new Page($tcf2024Page6Content),
+];
 
 return [
     'page' => $page,
@@ -59,4 +78,5 @@ return [
     'where' => $where,
     'why' => $why,
     'aus_day' => $aus,
+    'tcf2024' => $tcf2024,
 ];
