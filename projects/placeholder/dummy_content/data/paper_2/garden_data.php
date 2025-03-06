@@ -4,7 +4,7 @@ use App\Cms\Page;
 
 $content = [
     'title' => 'Community Garden',
-    'subtitle' => 'Australia Day Awards',
+    'subtitle' => '2024 Toowoomba Carnival of Flowers - 1st Prize',
     'intro' => 'intro string',
     'content' => 'content for body of page',
     'image' => '/assets/paper_theme_v2/img/garden_2024_1_lg.webp',
