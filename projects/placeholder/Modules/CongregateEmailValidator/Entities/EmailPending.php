@@ -27,7 +27,7 @@ class EmailPending extends Model
 
     protected static function booted()
     {
-        static::creating(function($model){
+        static::creating(function ($model) {
             $date = Date::now();
             $date->addDays();
             $model->expire_at = $date;

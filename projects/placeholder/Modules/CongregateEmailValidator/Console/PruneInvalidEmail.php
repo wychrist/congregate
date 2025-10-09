@@ -4,6 +4,7 @@ namespace Modules\CongregateEmailValidator\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Date;
+use Modules\CongregateEmailValidator\EmailValidator;
 use Modules\CongregateEmailValidator\Entities\EmailPending;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
@@ -15,7 +16,7 @@ class PruneInvalidEmail extends Command
      *
      * @var string
      */
-    protected $name = 'congregate:email-prune';
+    protected $signature = 'congregate:email-prune {days=7} ';
 
     /**
      * The console command description.
@@ -41,10 +42,8 @@ class PruneInvalidEmail extends Command
      */
     public function handle()
     {
-        $date = Date::now();
-        $date->addDays(2);
-
-        EmailPending::whereDay('expire_at', '<', $date)->delete();
+        $daysOld = $this->argument('days');
+        EmailValidator::prune_old_entries(daysOld: $daysOld);
         return 0;
     }
 

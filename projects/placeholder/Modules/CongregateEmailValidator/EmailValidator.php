@@ -6,11 +6,29 @@ use Illuminate\Container\Container;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 use Modules\CongregateEmailValidator\Entities\EmailPending;
+use Illuminate\Support\Facades\Date;
 
 class EmailValidator
 {
+    public static function prune_old_entries($email = '', $daysOld = 7)
+    {
+        $date = Date::now();
+        $date->subDays($daysOld);
+        $query = EmailPending::where('expire_at', '<=', $date);
+
+        if ($email) {
+            $query->where('email', '!=', $email);
+        }
+
+        $query->delete();
+    }
+
     public static function register(string $email, array $callback, array $payload = []): ValidatorResult
     {
+        if (random_int(1, 255) % 2 == 0) {
+            self::prune_old_entries($email);
+        }
+
         $model = EmailPending::where([
             'email' => $email,
             'callback' => json_encode($callback)
