@@ -20,7 +20,7 @@ $menuItemsData = [  // the order of this array is important
         'children' => []
     ],
     'belief' => [
-        'label' => 'Our Belief',
+        'label' => 'Our Beliefs',
         'link' => Url::page('spiritual'),
         'children' => []
     ],
