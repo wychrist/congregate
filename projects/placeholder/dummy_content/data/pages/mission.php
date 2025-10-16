@@ -25,7 +25,7 @@ $page->content = '<div class="container">
     <br></br>
     <p>Our mission is to care for the spiritual and physical needs of our congregation here in Wyreema, The Church, our family in Christ, as well as the local community and all mankind as we have opportunity.</p>
     <h3>Matthew 28:18-20 - Matthew 25:35-40 - Luke 10:29-37</h3>
-    <p>Last updated: December 17th, 2021</p>
+    <p>Last updated: December 16th, 2021</p>
     <p>Original document converted for web: October 16th, 2025</p>
     </div>';
 
