@@ -9,9 +9,19 @@ $menuItemsData = [  // the order of this array is important
         'link' => '/',
         'children' => []
     ],
+    'worship' => [
+        'label' => 'Sunday Worship',
+        'link' => Url::page('worship'),
+        'children' => []
+    ],
     'garden' => [
         'label' => 'Community Garden',
         'link' => Url::page('garden'),
+        'children' => []
+    ],
+    'belief' => [
+        'label' => 'Our Beliefs',
+        'link' => Url::page('spiritual'),
         'children' => []
     ],
     'about-us' => [
