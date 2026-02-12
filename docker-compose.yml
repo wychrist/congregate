@@ -1,4 +1,3 @@
-#version: "3.6"
 services:
   workspace:
     build:
@@ -17,6 +16,21 @@ services:
       - ./projects/personal:/projects/personal
     networks:
       - webnetwork
+  rust:
+    build:
+      context: ./docker/rust
+      args:
+        - USERID=${USERID}
+        - GROUPID=${GROUPID}
+        - USER_NAME=${USER_NAME}
+        - GROUP_NAME=${GROUP_NAME}
+    volumes:
+      - ./projects:/projects
+    networks:
+      - webnetwork
+    hostname: rust
+    ports:
+       - 8888:8080
   redisdb:
     build:
       context: ./docker/redis
