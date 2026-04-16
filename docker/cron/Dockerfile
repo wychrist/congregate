@@ -16,8 +16,7 @@ RUN apt-get update && apt-get install -y \
 
 
 RUN pecl install redis \
-    && pecl install mongodb \
-    && docker-php-ext-enable redis mongodb
+    && docker-php-ext-enable redis 
 
 RUN apt-get -y install cron
 

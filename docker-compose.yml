@@ -69,18 +69,18 @@ services:
                 - realtime.test
      hostname: nginx
 
-  meilisearch:
-    image: 'getmeili/meilisearch:latest'
-    environment:
-       - MEILI_MASTER_KEY=${MEILI_MASTER_KEY:-meilimaster123}
-       - MEILI_ENV=${MEILI_ENV:-production}
-    volumes:
-     - ./docker/meilisearch/data:/data.ms
-    networks:
-      - webnetwork
-    ports:
-     - ${MEILI_PORT:-7700}:7700
-    hostname: meilisearch
+  # meilisearch:
+  #   image: 'getmeili/meilisearch:latest'
+  #   environment:
+  #      - MEILI_MASTER_KEY=${MEILI_MASTER_KEY:-meilimaster123}
+  #      - MEILI_ENV=${MEILI_ENV:-production}
+  #   volumes:
+  #    - ./docker/meilisearch/data:/data.ms
+  #   networks:
+  #     - webnetwork
+  #   # ports:
+  #   #  - ${MEILI_PORT:-7700}:7700
+  #   hostname: meilisearch
 
   db:
     build:
@@ -89,7 +89,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-dbpassword}
       - MYSQL_USER=${MYSQL_USER:-dbuser}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-dbuser}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-dbpassword}
     networks:
       - webnetwork
     volumes:
@@ -107,7 +107,7 @@ services:
     networks:
       - webnetwork
     volumes:
-      - ./docker/postgres/data:/var/lib/postgresql/data
+      - ./docker/postgres/data:/var/lib/postgresql
     hostname: postgres
 
   phpfpm:
@@ -159,17 +159,13 @@ services:
     build:
       context: ./docker/nodejs
     volumes:
-      - ./projects/realtime:/projects/realtime
-      - ./projects/chat:/projects/chat
-      - ./projects/congregate:/projects/congregate
-      - ./projects/placeholder:/projects/placeholder
-      - ./projects/personal:/projects/personal
+      - ./projects:/projects
     hostname: nodejs
     command: tail -F anything
-    ports:
-      - ${NODE_PORT}:8080
-      - ${CP_REALTIME_PORT}:3000
-      - ${CP_CONGREGATE_PORT}:4000
+    # ports:
+    #   - ${NODE_PORT}:8080
+    #   - ${CP_REALTIME_PORT}:3000
+    #   - ${CP_CONGREGATE_PORT}:4000
     networks:
       - webnetwork
 
@@ -192,9 +188,9 @@ services:
 
   mail:
     image: mailhog/mailhog
-    ports:
-      - ${MAILHOG_PORT:-1025}:1025
-      - ${MAILHOG_UI:-8025}:8025
+    # ports:
+    #   - ${MAILHOG_PORT:-1025}:1025
+    #   - ${MAILHOG_UI:-8025}:8025
     networks:
       - webnetwork
     hostname: mailhog
@@ -204,8 +200,8 @@ services:
       context: './docker/minio'
     volumes:
       - ./docker/minio/data:/data
-    ports:
-      - ${MINIO_PORT}:9000
+    # ports:
+    #   - ${MINIO_PORT}:9000
     environment:
       MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY:-minio}
       MINIO_SECRET_KEY: ${MINIO_SECRET_KEY:-minio123}

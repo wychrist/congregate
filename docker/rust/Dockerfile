@@ -12,12 +12,12 @@ RUN groupadd -g ${GROUPID} ${GROUP_NAME} && \
 
 RUN apt update
 RUN apt install curl wget -y
-RUN apt install git lazygit fzf curl ripgrep -y
+# RUN apt install git lazygit fzf curl ripgrep -y
 
 
 # Neovim
-RUN wget https://github.com/neovim/neovim-releases/releases/download/v0.11.4/nvim-linux-x86_64.deb -O /tmp/nvim.deb
-RUN apt install /tmp/nvim.deb -y
+# RUN wget https://github.com/neovim/neovim-releases/releases/download/v0.11.4/nvim-linux-x86_64.deb -O /tmp/nvim.deb
+# RUN apt install /tmp/nvim.deb -y
 
 # RUN curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/install.sh | bash -s -- -p /usr/local
 
