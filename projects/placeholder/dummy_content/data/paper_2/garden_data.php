@@ -4,10 +4,10 @@ use App\Cms\Page;
 
 $content = [
     'title' => 'Community Garden',
-    'subtitle' => '2024 Toowoomba Carnival of Flowers - 1st Prize',
-    'intro' => 'intro string',
+    'subtitle' => '2025 Toowoomba Carnival of Flowers - 1st Prize',
+    'intro' => 'Not-for-Profit Premises',
     'content' => 'content for body of page',
-    'image' => '/assets/paper_theme_v2/img/garden_2024_1_lg.webp',
+    'image' => '/assets/paper_theme_v2/img/Carnival2025.jpg',
     'images' => [
         'first' => '/assets/paper_theme_v2/img/garden_2024_1.webp',
         'second' => '/assets/paper_theme_v2/img/garden_2024_2.webp',
@@ -72,6 +72,17 @@ $tcf2024->children = [
     new Page($tcf2024Page6Content),
 ];
 
+$tcf2025 = new Page(['title' => '2025 Toowoomba Carnival of Flowers']);
+$tcf2025Page1Content = ['title' => '1st Prize 2025', 'content' => 'The Chronicle Garden Competition Not For Profit Category Winners for 2025 with the Floral Frenzy theme.', 'image' => '/assets/paper_theme_v2/img/2025WinnerTrophy.png'];
+$tcf2025Page2Content = ['title' => 'Winner\'s Flag', 'content' => '', 'image' => '/assets/paper_theme_v2/img/2025WinnerFlag.png'];
+$tcf2025Page3Content = ['title' => '1st Place', 'content' => '', 'image' => '/assets/paper_theme_v2/img/20251stPlace.jpg'];
+
+$tcf2025->children = [
+    new Page($tcf2025Page1Content),
+    new Page($tcf2025Page2Content),
+    new Page($tcf2025Page3Content),
+];
+
 return [
     'page' => $page,
     'what' => $what,
@@ -79,4 +90,5 @@ return [
     'why' => $why,
     'aus_day' => $aus,
     'tcf2024' => $tcf2024,
+    'tcf2025' => $tcf2025,
 ];
